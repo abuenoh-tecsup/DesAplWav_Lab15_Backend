@@ -8,8 +8,27 @@ const categoriesRouter = require('./routes/categories');
 
 const app = express();
 
-// Middlewares
-app.use(cors());
+const allowedOrigins = [
+    'http://localhost:3000',                     
+    'https://des-apl-wav-lab15-frontend.vercel.app',
+];
+
+app.use(
+    cors({
+        origin: function (origin, callback) {
+            if (!origin) return callback(null, true);
+
+            if (allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                console.log('CORS bloqueado para:', origin);
+                callback(new Error('No permitido por CORS'));
+            }
+        },
+        credentials: true,
+    })
+);
+
 app.use(express.json());
 
 // Rutas
