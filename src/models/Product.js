@@ -10,19 +10,19 @@ const Product = sequelize.define('Product', {
     nombre: {
         type: DataTypes.STRING(100),
         allowNull: false,
-        validate: {
-            notEmpty: true
-        }
+        validate: { notEmpty: true }
     },
     precio: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
-        validate: {
-            min: 0
-        }
+        validate: { min: 0 }
     },
     descripcion: {
         type: DataTypes.TEXT,
+        allowNull: true
+    },
+    imageUrl: {
+        type: DataTypes.STRING,
         allowNull: true
     }
 }, {

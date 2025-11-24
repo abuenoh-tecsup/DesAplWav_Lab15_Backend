@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+
 const productsRouter = require('./routes/products');
 const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users');
+const categoriesRouter = require('./routes/categories');
 
 const app = express();
 
@@ -14,6 +16,7 @@ app.use(express.json());
 app.use('/api/products', productsRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/categories', categoriesRouter);
 
 // Ruta raíz
 app.get('/', (req, res) => {
