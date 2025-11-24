@@ -5,7 +5,7 @@ const authorize = require('../middlewares/authorize');
 
 const router = express.Router();
 
-router.get('/', authenticate, authorize(['admin']), UserController.getAll);
+router.get('/', authenticate, authorize(['ADMIN']), UserController.getAll);
 
 router.get('/me', authenticate, authorize([]), UserController.getMe);
 
